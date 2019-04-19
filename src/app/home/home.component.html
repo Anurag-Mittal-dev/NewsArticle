@@ -1,5 +1,24 @@
-<section>
+<h1 class="pt-1 text-center">NEWS ARTICLE</h1>
+
+<section *ngIf="newsData != undefined">
   <div class="row">
+    <!-- The filter for publisher and category -->
+    <div class="col-md-2 filter-div">
+      <p class="text-center">FILTERS:</p>
+      <div class="card pt-2 pb-2">
+        <div class="card-body">
+          <div class="card-title">Publisher</div>
+          <div class="card-content"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">Category</div>
+          <div class="card-content"></div>
+        </div>
+      </div>
+    </div>
+    <!-- The news data displayed using pagination -->
     <div class="col-md-10">
       <div class="row">
         <div class="col-md-4" *ngFor="let newsData of newsData | paginate: { itemsPerPage: 15, currentPage: p }">
@@ -11,6 +30,14 @@
                 <p><span class="badge-light">Publisher:</span> {{newsData.PUBLISHER}}</p>
                 <p><span class="badge-light">Category:</span> {{newsData.CATEGORY}}</p>
                 <p><span class="badge-light">Host Name:</span> {{newsData.HOSTNAME}}</p>
+                <!-- Like Article -->
+                <div *ngIf="newsData.like == undefined || newsData.like == false">
+                  <i (click)="articleLiked(newsData.TITLE)" class="star far fa-star"></i>
+                </div>
+                <!-- Unlike Article -->
+                <div *ngIf="newsData.like == true">
+                  <i (click)="articleLiked(newsData.TITLE)" class="star fas fa-star"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -18,8 +45,8 @@
       </div>
     </div>
   </div>
-</section>
 
-<div *ngIf="newsData != undefined">
+  <!-- Pagination Controls -->
   <pagination-controls class="pt-3 text-center" (pageChange)="p = $event"></pagination-controls>
-</div>
+
+</section>

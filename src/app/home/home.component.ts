@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainServiceService } from '../service/main-service.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,22 @@ export class HomeComponent implements OnInit {
         this.newsData = res;
       })
 
+  }
+
+  // function to toggle like and unline of article
+  articleLiked(articleTitle) {
+    console.log(articleTitle);
+    for (var i = 0; i <= this.newsData.length; i++) {
+      if (articleTitle == this.newsData[i]['TITLE']) {
+        if (this.newsData[i]['like'] == undefined || this.newsData[i]['like'] == false) {
+          this.newsData[i]['like'] = true;
+        }
+        else
+          this.newsData[i]['like'] = false;
+        console.log(this.newsData[i]);
+
+      }
+    }
   }
 
 }
