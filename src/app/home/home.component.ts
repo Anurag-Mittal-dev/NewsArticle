@@ -8,6 +8,7 @@ import { MainServiceService } from '../service/main-service.service';
 })
 export class HomeComponent implements OnInit {
   newsData: any;
+  p: number = 1;
 
   constructor(
     private mainService: MainServiceService

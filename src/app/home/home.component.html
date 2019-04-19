@@ -1,17 +1,25 @@
 <section>
   <div class="row">
-    <div class="col-md-4" *ngFor="let newsData of newsData">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">{{newsData.TITLE}}</div>
-          <div class="card-content">
-            <a href="{{newsData.URL}}" target="_blank">Link to Article</a>
-            <p><span class="badge-light">Publisher:</span> {{newsData.PUBLISHER}}</p>
-            <p><span class="badge-light">Category:</span> {{newsData.CATEGORY}}</p>
-            <p><span class="badge-light">Host Name:</span> {{newsData.HOSTNAME}}</p>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let newsData of newsData | paginate: { itemsPerPage: 15, currentPage: p }">
+          <div class="card pb-2">
+            <div class="card-body">
+              <div class="card-title">{{newsData.TITLE}}</div>
+              <div class="card-content">
+                <a href="{{newsData.URL}}" target="_blank">Link to Article</a>
+                <p><span class="badge-light">Publisher:</span> {{newsData.PUBLISHER}}</p>
+                <p><span class="badge-light">Category:</span> {{newsData.CATEGORY}}</p>
+                <p><span class="badge-light">Host Name:</span> {{newsData.HOSTNAME}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div *ngIf="newsData != undefined">
+  <pagination-controls class="pt-3 text-center" (pageChange)="p = $event"></pagination-controls>
+</div>
