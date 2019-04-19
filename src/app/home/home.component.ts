@@ -7,6 +7,7 @@ import { MainServiceService } from '../service/main-service.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  newsData: any;
 
   constructor(
     private mainService: MainServiceService
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
     this.mainService.getData()
       .subscribe(res => {
         console.log(res);
+        this.newsData = res;
       })
 
   }

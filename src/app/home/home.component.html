@@ -1,3 +1,17 @@
-<p>
-  home works!
-</p>
+<section>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let newsData of newsData">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">{{newsData.TITLE}}</div>
+          <div class="card-content">
+            <a href="{{newsData.URL}}" target="_blank">Link to Article</a>
+            <p><span class="badge-light">Publisher:</span> {{newsData.PUBLISHER}}</p>
+            <p><span class="badge-light">Category:</span> {{newsData.CATEGORY}}</p>
+            <p><span class="badge-light">Host Name:</span> {{newsData.HOSTNAME}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
