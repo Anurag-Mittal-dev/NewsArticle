@@ -1,5 +1,6 @@
 <h1 class="pt-1 text-center">NEWS ARTICLE</h1>
 
+<p class="float-right" (click)="sortBy(TIMESTAMP)"><i></i>Date</p>
 <p class="text-center"><span class="blue" (click)="home()"> Home</span><span> / </span><span class="blue" (click)="getLikedArticles()">
     Liked Articles </span></p>
 <section *ngIf="newsData != undefined">
@@ -32,6 +33,7 @@
                 <p><span class="badge-light">Publisher:</span> {{newsData.PUBLISHER}}</p>
                 <p><span class="badge-light">Category:</span> {{newsData.CATEGORY}}</p>
                 <p><span class="badge-light">Host Name:</span> {{newsData.HOSTNAME}}</p>
+                <p><span class="badge-light">Published On:</span> {{newsData.TIMESTAMP | date}}</p>
                 <!-- Like Article -->
                 <div *ngIf="newsData.like == undefined || newsData.like == false">
                   <i (click)="articleLiked(newsData.TITLE)" class="star far fa-star"></i>
