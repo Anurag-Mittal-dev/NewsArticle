@@ -9,17 +9,21 @@ import { log } from 'util';
 })
 export class HomeComponent implements OnInit {
   newsData: any;
+  allArticles: any;
   p: number = 1;
+  articleDate: Array<any> = [];
 
   constructor(
     private mainService: MainServiceService
   ) { }
 
   ngOnInit() {
+    // get news article data from service
     this.mainService.getData()
       .subscribe(res => {
         console.log(res);
         this.newsData = res;
+        this.allArticles = res;
       })
 
   }
@@ -40,4 +44,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getLikedArticles() {
+    this.newsData = this.newsData.filter(e => {
+      return e.like == true;
+    })
+  }
+
+  home() {
+    this.newsData = this.allArticles;
+  }
 }

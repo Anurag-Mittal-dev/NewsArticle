@@ -10,3 +10,11 @@ section {
     float: right;
     margin-top: -35px;
 }
+
+.blue {
+    color: blue;
+}
+
+.blue:hover {
+    text-decoration: underline;
+}
